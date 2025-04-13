@@ -1,0 +1,41 @@
+1. 
+SELECT Country,count(CustomerID) as CustomerCount FROM Customers Group by Country Order by Country;
+
+
+2.
+SELECT ord.OrderID,ord.CustomerID,cust.CustomerName 
+FROM Orders ord inner join Customers cust 
+ON ord.CustomerID=cust.CustomerID
+ORDER BY OrderID;
+
+3.
+SELECT ord.OrderID,ord.CustomerID,cust.CustomerName 
+FROM Orders ord left join Customers cust 
+ON ord.CustomerID=cust.CustomerID
+ORDER BY OrderID;
+
+
+4.
+SELECT ord.OrderID,ord.CustomerID,cust.CustomerName 
+FROM Orders ord right join Customers cust 
+ON ord.CustomerID=cust.CustomerID
+ORDER BY OrderID;
+
+
+5.
+SELECT cust.CustomerID,cust.CustomerName 
+FROM  Customers cust 
+where cust.CustomerID IN (select distinct ord.CustomerID from Orders ord)
+
+6.
+SELECT OrderID,sum(Quantity) as QuantCount FROM OrderDetails Group by OrderID;
+
+
+7.
+Create View Order_Customer_Info
+AS
+
+SELECT ord.OrderID,cust.CustomerID,CustomerName,ContactName
+FROM Orders ord inner join Customers cust 
+ON ord.CustomerID=cust.CustomerID
+ORDER BY OrderID;
