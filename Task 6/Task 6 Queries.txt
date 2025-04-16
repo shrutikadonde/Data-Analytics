@@ -1,0 +1,24 @@
+SELECT OrderID,MONTH(OrderDate) as 'Month' FROM Orders;
+
+
+SELECT MONTH(OrderDate) as OrderMonth,count(OrderID) as ordercount FROM Orders Group by MONTH(OrderDate);
+
+
+SELECT OrderID,sum(Price) as revenue 
+FROM OrderDetails odd 
+INNER JOIN Products p 
+ON odd.ProductID=p.ProductID
+Group By OrderID;
+
+
+SELECT *
+FROM OrderDetails
+Order by OrderID;
+
+
+
+SELECT * FROM Orders WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+
+
+
+SELECT count(distinct OrderID) as OrderCnt FROM Orders WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
